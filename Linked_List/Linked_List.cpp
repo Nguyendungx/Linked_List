@@ -207,22 +207,30 @@ void themPhanTu(node* l,node*p,int n)
 
 }
 
-
 void timPhanTu(node* l, node* p)
 {
+	char s1[] = "Gia tri";
 	int k;
 	cin >> k;
 	p = getNode(l, k);
-	cout << p->data;
+	cout << p->data << endl;;
+	rectangle(405+k*90, 360, 465+k*90, 400);
+	line(400 + k * 90, 360, 430 + k * 90, 340);
+	line(470 + k * 90, 360, 430 + k * 90, 340);
+	line(400 + k * 90, 360, 470 + k * 90, 360);
+	drawText(400+k*90, 370, s1);
+	cout << "Nhan phim bat ki de tiep tuc." << endl;
+	_getch();
 }
 
 void chucNang(node*l,node*p,int n)
 {
+	printList(l);
 	cout << endl;
 	cout << "Chon 1 neu muon Add." << endl;
 	cout << "Chon 2 neu muon Delete." << endl;
 	cout << "Chon 3 neu muon Xuat gia tri." << endl;
-	cout << "Nhan phim bat ki de Reset." << endl;
+	cout << "Nhan phim bat ki de Thoat." << endl;
 	cout << "Quy uoc 0 la vi tri cua Head" << endl;
 	int t;
 	cin >> t;
@@ -250,8 +258,7 @@ void chucNang(node*l,node*p,int n)
 
 	else
 	{
-		system("cls");
-		chucNang(l, p, n);
+		exit;
 	}
 }
 
