@@ -158,25 +158,7 @@ void printList(node* l) {
 
 }
 
-
-void themPhanTu(node* l,node*p,int n)
-{
-	int k, x;
-	// Them phan tu x vao vi tri k
-	cin >> k >> x;
-	if (k == 0) {
-		l = addHead(l, x);
-	}
-	else if (k == n) {
-		l = addTail(l, x);
-	}
-	else {
-		l = addAt(l, k, x);
-	}
-	printList(l);
-}
-
-void xoaPhanTu(node* l,int n)
+void xoaPhanTu(node* l, int n)
 {
 	int k;
 	cin >> k;
@@ -192,6 +174,39 @@ void xoaPhanTu(node* l,int n)
 	printList(l);
 
 }
+
+void themPhanTu(node* l,node*p,int n)
+{
+	int t = 0;
+	node* a = l;
+	while (a != NULL) {
+		a = a->next;
+		t++;
+	}
+	if (t >= 5)
+	{
+		cout << "Chi co the xoa" << endl;
+		xoaPhanTu(l, n);
+	}
+	else
+	{
+		int k, x;
+		// Them phan tu x vao vi tri k
+		cin >> k >> x;
+		if (k == 0) {
+			l = addHead(l, x);
+		}
+		else if (k == n) {
+			l = addTail(l, x);
+		}
+		else {
+			l = addAt(l, k, x);
+		}
+		printList(l);
+	}
+
+}
+
 
 void timPhanTu(node* l, node* p)
 {
