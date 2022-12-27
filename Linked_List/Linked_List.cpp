@@ -205,11 +205,10 @@ void xoaPhanTu(node*& l, int n)
 	}
 	else
 	{
-
 		cout << "Trong" << endl;
+		cout << "Chon vi tri va gia tri muon them." << endl;
+		_getch();
 	}
-
-
 }
 
 void themPhanTu(node*& l, node* p, int n)
@@ -223,6 +222,7 @@ void themPhanTu(node*& l, node* p, int n)
 	if (t >= 5)
 	{
 		cout << "Chi co the xoa" << endl;
+		cout << "Chon vi tri xoa:" << endl;
 		xoaPhanTu(l, n);
 	}
 	else
