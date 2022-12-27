@@ -123,59 +123,96 @@ void printList(node* l) {
 		p = p->next;
 		t++;
 	}
-	// Mo hinh
-	setcolor(4);
-	for (int i = 0; i < t; i++)
+	if (t > 0)
 	{
-		rectangle(400+i*90, 300, 470+i*90, 330);
-		drawText(460 + i * 90, 300, "-->");
-	}
-
-	//In gia tri
-	for (int j = 0; j < t; j++)
-	{
-		char temp[5];
-		int n = a->data;
-		int q = 0;
-		dem(n, q);
-		for (int i = q - 1; i >= 0; i--)
+		// Mo hinh
+		setcolor(4);
+		for (int i = 0; i < t; i++)
 		{
-			temp[i] = (n % 10) + 48;
-			n = n / 10;
+			rectangle(400 + i * 90, 300, 470 + i * 90, 330);
+			drawText(460 + i * 90, 300, "-->");
 		}
-		temp[q] = '\0';
-		drawText(420 + (j) * 90, 300, temp);
-		a = a->next;
-	}
 
-	//Khung
-	setcolor(9);
-	rectangle(400, 250, 470, 290);
-	drawText(410, 250, "Head");
-	drawText(430, 275, "|");
-	circle(520+(t-1)*90, 315, 60);
-	drawText(495 + (t - 1) * 90, 300, "NULL");
+		//In gia tri
+		for (int j = 0; j < t; j++)
+		{
+			char temp[5];
+			int n = a->data;
+			if (a->data != 0)
+			{
+				int q = 0;
+				dem(n, q);
+				for (int i = q - 1; i >= 0; i--)
+				{
+					temp[i] = (n % 10) + 48;
+					n = n / 10;
+				}
+				temp[q] = '\0';
+				drawText(420 + (j) * 90, 300, temp);
+				a = a->next;
+			}
+			else
+			{
+				temp[0] = '0';
+				temp[1] = '\0';
+				drawText(420 + (j) * 90, 300, temp);
+				a = a->next;
+			}
+		}
+
+		//Khung
+		setcolor(9);
+		rectangle(400, 250, 470, 290);
+		drawText(410, 250, "Head");
+		drawText(430, 275, "|");
+		circle(520 + (t - 1) * 90, 315, 60);
+		drawText(495 + (t - 1) * 90, 300, "NULL");
+	}
+	else
+	{
+		setcolor(9);
+		rectangle(400, 250, 470, 290);
+		drawText(410, 250, "Head");
+		drawText(430, 275, "|");
+		circle(520 + (t - 1) * 90, 315, 60);
+		drawText(495 + (t - 1) * 90, 300, "NULL");
+	}
 
 }
 
-void xoaPhanTu(node* l, int n)
+void xoaPhanTu(node*& l, int n)
 {
-	int k;
-	cin >> k;
-	if (k == 0) {
-		l = deleteHead(l);
+	int t = 0;
+	node* a = l;
+	while (a != NULL) {
+		a = a->next;
+		t++;
 	}
-	else if (k == n - 1) {
-		l = deleteTail(l);
+	if (t > 0)
+	{
+		int k;
+		cin >> k;
+		if (k == 0) {
+			l = deleteHead(l);
+		}
+		else if (k == n - 1) {
+			l = deleteTail(l);
+		}
+		else {
+			l = deleteAt(l, k);
+		}
+		printList(l);
 	}
-	else {
-		l = deleteAt(l, k);
+	else
+	{
+
+		cout << "Trong" << endl;
 	}
-	printList(l);
+
 
 }
 
-void themPhanTu(node* l,node*p,int n)
+void themPhanTu(node*& l, node* p, int n)
 {
 	int t = 0;
 	node* a = l;
@@ -214,16 +251,16 @@ void timPhanTu(node* l, node* p)
 	cin >> k;
 	p = getNode(l, k);
 	cout << p->data << endl;;
-	rectangle(405+k*90, 360, 465+k*90, 400);
+	rectangle(405 + k * 90, 360, 465 + k * 90, 400);
 	line(400 + k * 90, 360, 430 + k * 90, 340);
 	line(470 + k * 90, 360, 430 + k * 90, 340);
 	line(400 + k * 90, 360, 470 + k * 90, 360);
-	drawText(400+k*90, 370, s1);
+	drawText(400 + k * 90, 370, s1);
 	cout << "Nhan phim bat ki de tiep tuc." << endl;
 	_getch();
 }
 
-void chucNang(node*l,node*p,int n)
+void chucNang(node*&l,node*p,int n)
 {
 	printList(l);
 	cout << endl;
@@ -248,7 +285,7 @@ void chucNang(node*l,node*p,int n)
 		xoaPhanTu(l, n);
 		chucNang(l, p, n);
 	}
-	
+
 	// Tim phan tu o vi tri k
 	else if (t == 3)
 	{
