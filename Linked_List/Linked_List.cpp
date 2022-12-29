@@ -303,6 +303,28 @@ int main() {
 	initgraph();
 	char s1[] = "Press any key to view the program.";
 	drawText(400, 50, s1);
+	drawText(460, 150, "SIMULATION LINKED LIST");
+	setcolor(4);
+	for (int i = 0; i < 4; i++)
+	{
+		rectangle(400 + i * 90, 300, 470 + i * 90, 330);
+		line(450 + i * 90, 300, 450 + i * 90, 330);
+		drawText(460 + i * 90, 300, "-->");
+	}
+	drawText(410, 300, "A");
+	drawText(500, 300, "B");
+	drawText(590, 300, "C");
+	drawText(680, 300, "D");
+	drawText(400, 330, "data");
+	drawText(440, 330, "next");
+	setcolor(9);
+	rectangle(400, 250, 470, 290);
+	drawText(410, 250, "Head");
+	drawText(430, 275, "|");
+	circle(520 + (4 - 1) * 90, 315, 60);
+	drawText(495 + (4 - 1) * 90, 300, "NULL");
+
+
 	_getch();
 	system("cls");
 
